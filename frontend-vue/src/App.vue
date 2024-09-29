@@ -5,6 +5,10 @@
     <div class="p-4">
       <RouterView />
     </div>
+    <footer v-if="!isMentionsLegalesPage && !isCookiesPage" class="footer">
+      <router-link to="/mentions-legales">Mentions légales - </router-link>
+      <router-link to="/cookies">Données personnelles</router-link>
+    </footer>
   </div>
 </template>
 
@@ -28,6 +32,12 @@ export default {
     isUserLoggedIn() {
       return !!this.authStore.user;
     },
+    isMentionsLegalesPage() {
+      return this.$route.name === 'mentionsL'
+    },
+    isCookiesPage() {
+      return this.$route.name === 'cookies'
+    },
   },
   async mounted() {
     try {
@@ -43,5 +53,11 @@ export default {
 <style scoped>
 .bg-light-gray {
   background-color: #f8f9fa;
+}
+
+.footer {
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 20px;
 }
 </style>

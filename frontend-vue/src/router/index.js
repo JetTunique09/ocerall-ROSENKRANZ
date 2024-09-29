@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useAuthStore } from '@/stores/useAuthStore'; 
+import MentionsL from '@/components/MentionsL.vue';
+import PersonalDataAndCookies from '@/components/PersonalDataAndCookies.vue';
+
 
 const router = createRouter({
   linkActiveClass: 'active text-primary border-bottom border-primary',
@@ -68,6 +71,19 @@ const router = createRouter({
       path: '/create-user/',
       name: 'create-user',
       component: () => import('../views/CreateUserView.vue'),
+      meta: { requiresAuth: true },
+
+    },
+    {
+      path: '/mentions-legales',
+      name: 'mentionsL',
+      component: MentionsL,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/cookies',
+      name: 'cookies',
+      component: PersonalDataAndCookies,
       meta: { requiresAuth: true },
 
     },
